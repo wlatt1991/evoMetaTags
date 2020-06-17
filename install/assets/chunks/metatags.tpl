@@ -3,10 +3,10 @@
  * 
  * Основные метатеги для сайта
  * 
- * @category	Templates
+ * @category	chunk
  * @version 	1.0
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
- * @internal @modx_category Js
+ * @modx_category Templates
  * @internal    @installset base
  * @internal    @overwrite false
  */
