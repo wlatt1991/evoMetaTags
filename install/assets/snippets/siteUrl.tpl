@@ -1,6 +1,6 @@
 //<?php
 /**
- * site_url
+ * siteUrl
  *
  * @category  		snippet
  * @version   		1.0
