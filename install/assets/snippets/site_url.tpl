@@ -2,7 +2,7 @@
 /**
  * site_url
  *
- * @category  		snippet
+ * @category  		add
  * @version   		1.0
  * @license     	GNU General Public License (GPL), http://www.gnu.org/copyleft/gpl.html
  * @param string 	$mode Какой протокол установить (https || http || auto)
