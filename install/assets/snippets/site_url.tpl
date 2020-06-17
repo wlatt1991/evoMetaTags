@@ -2,8 +2,9 @@
 /**
  * site_url
  *
- * @category  		add
+ * @category  		snippet
  * @version   		1.0
+ * @modx_category   add
  * @license     	GNU General Public License (GPL), http://www.gnu.org/copyleft/gpl.html
  * @param string 	$mode Какой протокол установить (https || http || auto)
  * @author 			wlatt <wlatt1991@yandex.ru>
