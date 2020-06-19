@@ -299,7 +299,7 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output = "\t\n<title>".html_entity_decode($value)."</title>\t\n" . $output;
+                $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT) . "</title>\t\n" . $output;
             }
 
             $render = DLTemplate::getInstance($this->modx);
