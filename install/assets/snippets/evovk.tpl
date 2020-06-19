@@ -65,15 +65,15 @@ if (!function_exists('addVkScripts') && !empty($output)) {
                         $.getScript("//vk.com/js/api/openapi.js?168", function(){
                             if(is_vk_comments || is_vk_groups || is_vk_like) {
                                 VK.init({apiId: '.$apiId.', onlyWidgets: true});
-                            }
-                            if (is_vk_like) {
-                                VK.Widgets.Like("vk_like", '.$likeProps.');
-                            }
-                            if (is_vk_comments) {
-                                VK.Widgets.Comments("vk_comments", '.$commentsProps.');
-                            }
-                            if (is_vk_groups) {
-                                VK.Widgets.Group("vk_groups", '.$groupsProps.', '.$groupsId.');
+                                if (is_vk_like) {
+                                    VK.Widgets.Like("vk_like", '.$likeProps.');
+                                }
+                                if (is_vk_comments) {
+                                    VK.Widgets.Comments("vk_comments", '.$commentsProps.');
+                                }
+                                if (is_vk_groups) {
+                                    VK.Widgets.Group("vk_groups", '.$groupsProps.', '.$groupsId.');
+                                }
                             }
                             if (is_vk_bookmarks) {
                                 VK.Widgets.Bookmarks("vk_bookmarks", '.$bookmarksProps.');
