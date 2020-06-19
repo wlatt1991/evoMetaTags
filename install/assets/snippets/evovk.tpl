@@ -14,7 +14,13 @@ if(!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
 $widget = isset($widget) ? (string)$widget : '';
 
-$initProps = '{apiId: 4245864, onlyWidgets: true}';
+$apiId = isset($apiId) ? (string)$apiId : '';
+
+if (empty($apiId)) {
+    return 'Требуется apiId';
+}
+
+$initProps = '{apiId: '.$appId.', onlyWidgets: true}';
 $shareProps = 'false, {type: "round", text: "Сохранить"}';
 $likeProps = '"vk_like", {type: "button"}';
 $commentsProps = '"vk_comments", {limit: 20, attach: "*", autoPublish: 1}';
