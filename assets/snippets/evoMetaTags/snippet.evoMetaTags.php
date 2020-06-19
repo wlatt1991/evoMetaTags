@@ -7,7 +7,7 @@ $share = new evoMetaTags($modx,$params);
 if($params['api'] == '1'){
     echo json_encode($share->getFields());
 }
-else if( $share->permission === true){
+else {
     echo $share->render();
 }
 

@@ -303,12 +303,14 @@ class evoMetaTags
                 $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n" . $output;
             }
 
-            $render = DLTemplate::getInstance($this->modx);
+            if ($this->permission) {
+                $render = DLTemplate::getInstance($this->modx);
 
-            $output .= $render->parseChunk($tpl, [
-                'type' => $tagName,
-                'value' => $value,
-            ]);
+                $output .= $render->parseChunk($tpl, [
+                    'type' => $tagName,
+                    'value' => $value,
+                ]);
+            }
         }
 
         $output = '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' . "\t\n" . $output;
