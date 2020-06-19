@@ -19,12 +19,15 @@ $modx->regClientHTMLBlock('
             var count = $(".adsbygoogle").length;
             if(count) {
                 $.getScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", function(){
+                    var as = (adsbygoogle = window.adsbygoogle || []);
                     for (var i = 0; i < count; i++) {
-                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        setTimeout(function() {
+                            as.push({});
+                        }, i*500);
                     }
                 });
             }
-        }, 1500);
+        }, 1000);
     });
 </script>
 ');
