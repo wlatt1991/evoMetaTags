@@ -1,8 +1,8 @@
 //<?php
 /**
- * OpenGraphTags
+ * evoMetaTags
  *
- * Выводим мета теги OpenGraph
+ * Выводим мета теги
  *
  * @category	snippet
  * @internal	@modx_category Content
