@@ -69,11 +69,9 @@ if (!function_exists('addVkScripts')) {
         </script>
     ';
 
-    function addVkScripts($html_block) {
-        $modx->regClientHTMLBlock($html_block);
-    }
+    function addVkScripts() {}
 
-    addVkScripts($html_block);
+    $modx->regClientHTMLBlock($html_block);
 }
 
 return $output;
