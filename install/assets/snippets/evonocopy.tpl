@@ -10,6 +10,7 @@
  * @internal	@overwrite true
  * @internal	@properties {}
  */
+if(!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
 $templates = isset($templates) ? (string)$templates : '';
 $div_attrs = isset($div_attrs) ? (string)$div_attrs : 'html,body,body>div';
