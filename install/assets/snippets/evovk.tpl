@@ -20,7 +20,7 @@ if (empty($apiId)) {
     return 'Требуется apiId';
 }
 
-$initProps = '{apiId: '.$appId.', onlyWidgets: true}';
+$initProps = '{apiId: '.$apiId.', onlyWidgets: true}';
 $shareProps = 'false, {type: "round", text: "Сохранить"}';
 $likeProps = '"vk_like", {type: "button"}';
 $commentsProps = '"vk_comments", {limit: 20, attach: "*", autoPublish: 1}';
