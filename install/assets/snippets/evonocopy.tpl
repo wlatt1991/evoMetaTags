@@ -14,7 +14,7 @@
 $templates = isset($templates) ? (string)$templates : '';
 $div_attrs = isset($div_attrs) ? (string)$div_attrs : 'html,body,body>div';
 
-$html_block = '<script type="text/javascript">(function(d,s){document.ondragstart=z3;document.onselectstart=z3;document.oncontextmenu=z3;function z3(){return false}})(document,screen)</script><style type="text/css">' . $div_attrs . '{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}</style>';
+$html_block = '<script>(function(d,s){document.ondragstart=z3;document.onselectstart=z3;document.oncontextmenu=z3;function z3(){return false}})(document,screen)</script><style type="text/css">' . $div_attrs . '{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}</style>';
 
 if (!empty($templates)) {
     $templates_arr = explode(',', trim($templates));
