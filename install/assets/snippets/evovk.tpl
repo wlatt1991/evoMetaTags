@@ -13,6 +13,12 @@
 
 $widget = isset($widget) ? (string)$widget : '';
 
+$initProps = '{apiId: 4245864, onlyWidgets: true}';
+$shareProps = 'false, {type: "round", text: "Сохранить"}';
+$likeProps = '"vk_like", {type: "button"}';
+$commentsProps = '"vk_comments", {limit: 20, attach: "*", autoPublish: 1, limit: 100}';
+$groupsProps = '"vk_groups", {mode: 1, no_cover: 1}, 179258215';
+
 $output = '';
 
 switch ($widget) {
@@ -40,36 +46,20 @@ if (!function_exists('addVkScripts')) {
                 setTimeout(function() {
                     if($("#vk_save").length) {
                         $.getScript("//vk.com/js/api/share.js?95", function(){
-                            $("#vk_save").html(VK.Share.button(false,{
-                                type: "round", 
-                                text: "Сохранить",
-                            }));
+                            $("#vk_save").html(VK.Share.button('.$shareProps.'));
                         });
                     }
                     if($("#vk_comments").length || $("#vk_groups").length || $("#vk_like").length) {
                         $.getScript("//vk.com/js/api/openapi.js?168", function(){
-                            VK.init({
-                                apiId: 4245864, 
-                                onlyWidgets: true,
-                            });
+                            VK.init('.$initProps.');
                             if ($("#vk_like").length) {
-                                VK.Widgets.Like("vk_like", {
-                                    type: "button",
-                                });
+                                VK.Widgets.Like('.$likeProps.');
                             }
                             if ($("#vk_comments").length) {
-                                VK.Widgets.Comments("vk_comments", {
-                                    limit: 20, 
-                                    attach: "*",
-                                    autoPublish: 1, 
-                                    limit: 100,
-                                });
+                                VK.Widgets.Comments('.$commentsProps.');
                             }
                             if ($("#vk_groups").length) {
-                                VK.Widgets.Group("vk_groups", {
-                                    mode: 1, 
-                                    no_cover: 1,
-                                }, 179258215);
+                                VK.Widgets.Group('.$groupsProps.');
                             }
                         });
                     }
