@@ -1,6 +1,5 @@
 <?php
 
-
 class evoMetaTags
 {
     /** @var $params array */
