@@ -18,6 +18,7 @@
 <link rel="canonical" href="[(site_url)][[if? &is=[*id*]:!=:1 &then=[~[*id*]~]]]">
 <link rel="shortcut icon" href="[(site_url)]favicon.ico" />
 <!--[if lt IE 9]><script src="[(site_url)]assets/templates/utils/html5shiv/html5shiv.min.js"></script><![endif]-->
+[[evojQuery? &version=`3`]]
 [[evoMetaTags]]
 [[evoNoCopy]]
 [[evoLI]]
