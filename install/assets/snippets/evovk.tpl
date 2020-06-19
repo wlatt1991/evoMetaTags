@@ -16,7 +16,7 @@ $widget = isset($widget) ? (string)$widget : '';
 $initProps = '{apiId: 4245864, onlyWidgets: true}';
 $shareProps = 'false, {type: "round", text: "Сохранить"}';
 $likeProps = '"vk_like", {type: "button"}';
-$commentsProps = '"vk_comments", {limit: 20, attach: "*", autoPublish: 1, limit: 100}';
+$commentsProps = '"vk_comments", {limit: 20, attach: "*", autoPublish: 1}';
 $groupsProps = '"vk_groups", {mode: 1, no_cover: 1}, 179258215';
 
 $output = '';
@@ -68,11 +68,11 @@ if (!function_exists('addVkScripts')) {
         </script>
     ';
 
-    function addVkScripts() {
+    function addVkScripts($html_block) {
         $modx->regClientHTMLBlock($html_block);
     }
 
-    addVkScripts();
+    addVkScripts($html_block);
 }
 
 return $output;
