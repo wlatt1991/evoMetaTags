@@ -14,7 +14,7 @@ if(!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
 $widget = isset($widget) ? (string)$widget : '';
 $apiId = isset($apiId) ? (int)$apiId : 0;
-$shareProps = isset($shareProps) ? (string)$shareProps : 'false, {type: "round", text: "Сохранить"}';
+$shareProps = isset($shareProps) ? (string)$shareProps : '{type: "round", text: "Сохранить"}';
 $likeProps = isset($likeProps) ? (string)$likeProps : '{type: "button"}';
 $commentsProps = isset($commentsProps) ? (string)$commentsProps : '{limit: 20, attach: "*", autoPublish: 1}';
 $groupsProps = isset($groupsProps) ? (string)$groupsProps : '{mode: 1, no_cover: 1}';
@@ -50,26 +50,32 @@ if (!function_exists('addVkScripts')) {
         <script>
             $(document).ready(function() {
                 setTimeout(function() {
-                    if($("#vk_save").length) {
+                    var is_vk_comments = !!$("#vk_comments").length;
+                    var is_vk_groups = !!$("#vk_groups").length;
+                    var is_vk_like = !!$("#vk_like").length;
+                    var is_vk_bookmarks = !!$("#vk_bookmarks").length;
+                    var is_vk_save = !!$("#vk_save").length;
+
+                    if(is_vk_save) {
                         $.getScript("//vk.com/js/api/share.js?95", function(){
-                            $("#vk_save").html(VK.Share.button('.$shareProps.'));
+                            $("#vk_save").html(VK.Share.button(false, '.$shareProps.'));
                         });
                     }
-                    if($("#vk_comments").length || $("#vk_groups").length || $("#vk_like").length || $("#vk_bookmarks").length) {
+                    if(is_vk_comments || is_vk_groups || is_vk_like || is_vk_bookmarks) {
                         $.getScript("//vk.com/js/api/openapi.js?168", function(){
-                            if($("#vk_comments").length || $("#vk_groups").length || $("#vk_like").length) {
+                            if(is_vk_comments || is_vk_groups || is_vk_like) {
                                 VK.init({apiId: '.$apiId.', onlyWidgets: true});
                             }
-                            if ($("#vk_like").length) {
+                            if (is_vk_like) {
                                 VK.Widgets.Like("vk_like", '.$likeProps.');
                             }
-                            if ($("#vk_comments").length) {
+                            if (is_vk_comments) {
                                 VK.Widgets.Comments("vk_comments", '.$commentsProps.');
                             }
-                            if ($("#vk_groups").length) {
+                            if (is_vk_groups) {
                                 VK.Widgets.Group("vk_groups", '.$groupsProps.', '.$groupsId.');
                             }
-                            if ($("#vk_bookmarks").length) {
+                            if (is_vk_bookmarks) {
                                 VK.Widgets.Bookmarks("vk_bookmarks", '.$bookmarksProps.');
                             }
                         });
