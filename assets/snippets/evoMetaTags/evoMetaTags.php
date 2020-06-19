@@ -298,9 +298,9 @@ class evoMetaTags
                 continue;
             }
 
-            // if ($tagName === 'title') {
-            //     //$output = "\t\n<title>".html_entity_decode($value, ENT_HTML5)."</title>\t\n" . $output;
-            // }
+            if ($tagName === 'title') {
+                $output = "\t\n<title>".html_entity_decode($value, ENT_HTML5)."</title>\t\n" . $output;
+            }
 
             $render  = DLTemplate::getInstance($this->modx);
 
