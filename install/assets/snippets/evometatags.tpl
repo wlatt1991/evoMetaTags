@@ -11,4 +11,4 @@
  * @internal	@properties {}
  */
 
-return require MODX_BASE_PATH.'assets/snippets/openGraphTags/snippet.openGraphTags.php';
+return require MODX_BASE_PATH.'assets/snippets/evoMetaTags/snippet.evoMetaTags.php';

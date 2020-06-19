@@ -1,12 +1,12 @@
 /**
- * og_image
+ * meta_description
  *
- * og_image
+ * meta_description
  *
  * @category	tv
- * @name	og_image
- * @internal	@caption Open Graph Image
- * @internal	@input_type image
+ * @name	meta_description
+ * @internal	@caption Meta Description
+ * @internal	@input_type text
  * @internal	@modx_category Content
  * @internal	@input_default 
  * @internal    @lock_tv 0

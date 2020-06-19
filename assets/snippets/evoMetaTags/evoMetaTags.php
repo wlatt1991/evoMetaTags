@@ -1,7 +1,7 @@
 <?php
 
 
-class openGraphTags
+class evoMetaTags
 {
     /** @var $params array */
     private $params;
@@ -14,7 +14,7 @@ class openGraphTags
 
 
 
-    private $ogFields = [];
+    private $metaFields = [];
 
     /**
      * openGraphTags constructor.
@@ -50,13 +50,13 @@ class openGraphTags
         if (!empty($this->params['siteName'])) {
             $name = $this->params['siteName'];
         }
-        $this->ogFields['site_name'] = $name;
+        $this->metaFields['site_name'] = $name;
     }
 
     private function getLocale()
     {
         $locale = isset($this->params['locale']) ? $this->params['locale'] : "ru_RU";
-        $this->ogFields['locale'] = $locale;
+        $this->metaFields['locale'] = $locale;
     }
 
     private function getType()
@@ -78,7 +78,7 @@ class openGraphTags
         if(!empty($this->params['type'])){
             $type = $this->params['type'];
         }
-        $this->ogFields['type'] = $type;
+        $this->metaFields['type'] = $type;
     }
 
     private function getTitle()
@@ -86,13 +86,13 @@ class openGraphTags
 
         if (!empty($this->params['title'])) {
             $title = $this->params['title'];
-        } else if (!empty($this->modx->documentObject['og_title'][1])) {
-            $title = $this->modx->documentObject['og_title'][1];
+        } else if (!empty($this->modx->documentObject['meta_title'][1])) {
+            $title = $this->modx->documentObject['meta_title'][1];
         } else {
             $title = $this->modx->documentObject['pagetitle'];
         }
-        $this->ogFields['title'] = $title;
-        $this->ogFields['e.title'] = htmlentities($title, ENT_COMPAT, 'UTF-8', false);
+        $this->metaFields['title'] = $title;
+        $this->metaFields['e.title'] = htmlentities($title, ENT_COMPAT, 'UTF-8', false);
 
         return $title;
     }
@@ -102,8 +102,8 @@ class openGraphTags
         $summaryContent = isset($this->params['summaryContent']) ? $this->params['summaryContent'] : '1';
         if (!empty($this->params['description'])) {
             $description = $this->params['description'];
-        } else if (!empty($this->modx->documentObject['og_description'][1])) {
-            $description = $this->modx->documentObject['og_description'][1];
+        } else if (!empty($this->modx->documentObject['meta_description'][1])) {
+            $description = $this->modx->documentObject['meta_description'][1];
         } else if (!empty($this->modx->documentObject['introtext'])) {
             $description = $this->modx->documentObject['introtext'];
         } else {
@@ -113,8 +113,8 @@ class openGraphTags
             }
 
         }
-        $this->ogFields['description'] = $description;
-        $this->ogFields['e.description'] = htmlentities($description, ENT_COMPAT, 'UTF-8', false);
+        $this->metaFields['description'] = $description;
+        $this->metaFields['e.description'] = htmlentities($description, ENT_COMPAT, 'UTF-8', false);
     }
 
     private function getImage()
@@ -134,8 +134,8 @@ class openGraphTags
             $imageStorage = array_merge(['SimpleGalleryImage'], array_column($tvs, 'name'));
         }
 
-        if(empty($this->params['image']) && $this->checkImage($this->modx->documentObject['og_image'][1])){
-            $imageSrc = $this->modx->documentObject['og_image'][1];
+        if(empty($this->params['image']) && $this->checkImage($this->modx->documentObject['meta_image'][1])){
+            $imageSrc = $this->modx->documentObject['meta_image'][1];
         }
 
 
@@ -212,7 +212,7 @@ class openGraphTags
         $imageSrc = $this->normalizeImageSrc($imageSrc);
 
         $imageSrcFull = $this->modx->getConfig('site_url') . $imageSrc;
-        $this->ogFields['image'] = $imageSrcFull;
+        $this->metaFields['image'] = $imageSrcFull;
     }
 
 
@@ -262,7 +262,7 @@ class openGraphTags
             $url = $this->params['url'];
         }
 
-        $this->ogFields['url'] = $url;
+        $this->metaFields['url'] = $url;
     }
 
     /**
@@ -272,7 +272,7 @@ class openGraphTags
     {
 
         //если стоит тв не показовать og теги на текущей странице
-        if($this->modx->documentObject['og_off'][1] == '1'){
+        if($this->modx->documentObject['meta_og_off'][1] == '1'){
             $this->permission = false;
         }
         $tplList = isset($this->params['tplList']) ? str_replace(" ", "", $this->params['tplList']) : 'all';
@@ -283,7 +283,7 @@ class openGraphTags
             $this->permission = false;
         }
 
-        $this->ogFields['permission'] = $this->permission;
+        $this->metaFields['permission'] = $this->permission;
 
     }
 
@@ -293,7 +293,7 @@ class openGraphTags
 
         $output = '';
         foreach ($this->metaTags as $tagName) {
-            $value = $this->ogFields['e.'.$tagName]?$this->ogFields['e.'.$tagName]:$this->ogFields[$tagName];
+            $value = $this->metaFields['e.'.$tagName]?$this->metaFields['e.'.$tagName]:$this->metaFields[$tagName];
             if(empty($value)){
                 continue;
             }
@@ -313,7 +313,7 @@ class openGraphTags
 
     public function getFields()
     {
-        return $this->ogFields;
+        return $this->metaFields;
     }
 
 

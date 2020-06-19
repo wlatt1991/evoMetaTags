@@ -1,10 +1,10 @@
 /**
- * og_off
+ * meta_og_off
  *
- * og_off
+ * meta_og_off
  *
  * @category	tv
- * @name	og_off
+ * @name	meta_og_off
  * @internal	@caption Не выводить og теги на текущей странице
  * @internal	@input_type checkbox
  * @internal	@modx_category Content

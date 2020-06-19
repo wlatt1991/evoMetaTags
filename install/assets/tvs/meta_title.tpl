@@ -1,11 +1,11 @@
 /**
- * og_description
+ * meta_title
  *
- * og_description
+ * meta_title
  *
  * @category	tv
- * @name	og_description
- * @internal	@caption Open Grapth Description
+ * @name	meta_title
+ * @internal	@caption Meta Title
  * @internal	@input_type text
  * @internal	@modx_category Content
  * @internal	@input_default 
