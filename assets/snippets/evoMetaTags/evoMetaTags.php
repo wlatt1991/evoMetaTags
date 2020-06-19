@@ -312,7 +312,8 @@ class evoMetaTags
                 ]);
             }
         }
-
+        
+        $output = '<!--[if lt IE 9]><script src="[(site_url)]assets/templates/html5shiv/html5shiv.min.js"></script><![endif]-->' . "\t\n" . $output;
         $output = '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' . "\t\n" . $output;
         $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charset . '" />' . "\t\n" . $output;
 
