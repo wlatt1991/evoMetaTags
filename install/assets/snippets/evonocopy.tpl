@@ -11,4 +11,6 @@
  * @internal	@properties {}
  */
 
-return require MODX_BASE_PATH.'assets/snippets/evoNoCopy/snippet.evoNoCopy.php';
+$modx->regClientHTMLBlock('<script type="text/javascript">(function(d,s){document.ondragstart=z3;document.onselectstart=z3;document.oncontextmenu=z3;function z3(){return false}})(document,screen)</script><style type="text/css">html,body{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}</style>');
+
+return;
