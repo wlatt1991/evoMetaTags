@@ -298,15 +298,16 @@ class evoMetaTags
                 continue;
             }
 
+            if ($tagName === 'title') {
+                $output = "\t\n<title>".$value."</title>\t\n" . $output;
+            }
+
             $render  = DLTemplate::getInstance($this->modx);
 
             $output .= $render->parseChunk($tpl,[
                 'type'=>$tagName,
                 'value'=>$value,
             ]);
-
-
-
         }
         return $output;
     }
@@ -315,6 +316,5 @@ class evoMetaTags
     {
         return $this->metaFields;
     }
-
 
 }
