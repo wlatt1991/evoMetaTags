@@ -45,7 +45,7 @@ switch ($widget) {
         break;
 }
 
-if (!function_exists('addVkScripts')) {
+if (!function_exists('addVkScripts') && !empty($output)) {
     $html_block = '
         <script>
             $(document).ready(function() {
