@@ -291,8 +291,7 @@ class evoMetaTags
     {
         $tpl = isset($this->params['tpl'])?$this->params['tpl']: '@CODE:'."\t\n".'<meta property="og:[+type+]" content="[+value+]">';
 
-        $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charset . '" />' . "\t\n";
-        $output .= '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' . "\t\n";
+        $output = '';
 
         foreach ($this->metaTags as $tagName) {
             $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
@@ -311,6 +310,10 @@ class evoMetaTags
                 'value' => $value,
             ]);
         }
+
+        $output = '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' . "\t\n" . $output;
+        $output = '<meta http-equiv="Content-Type" content="text/html; charset=' . $this->charset . '" />' . "\t\n" . $output;
+
         return $output;
     }
 
