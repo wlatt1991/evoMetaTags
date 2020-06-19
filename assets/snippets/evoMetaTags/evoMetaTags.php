@@ -293,20 +293,20 @@ class evoMetaTags
 
         $output = '';
         foreach ($this->metaTags as $tagName) {
-            $value = $this->metaFields['e.'.$tagName]?$this->metaFields['e.'.$tagName]:$this->metaFields[$tagName];
+            $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
             if(empty($value)){
                 continue;
             }
 
             if ($tagName === 'title') {
-                $output = "\t\n<title>".html_entity_decode($value, ENT_HTML5)."</title>\t\n" . $output;
+                $output = "\t\n<title>".html_entity_decode($value, ENT_HTML5, $this->modx->getConfig('modx_charset'))."</title>\t\n" . $output;
             }
 
-            $render  = DLTemplate::getInstance($this->modx);
+            $render = DLTemplate::getInstance($this->modx);
 
-            $output .= $render->parseChunk($tpl,[
-                'type'=>$tagName,
-                'value'=>$value,
+            $output .= $render->parseChunk($tpl, [
+                'type' => $tagName,
+                'value' => $value,
             ]);
         }
         return $output;
