@@ -1,8 +1,8 @@
 //<?php
 /**
- * evoNoCopy
+ * evoUtils
  *
- * Защита от копирования
+ * Утилиты для Evo
  *
  * @category	snippet
  * @internal	@modx_category Content
@@ -11,4 +11,4 @@
  * @internal	@properties {}
  */
 
-return require MODX_BASE_PATH.'assets/snippets/noCopy/snippet.evoUtils.php';
+return require MODX_BASE_PATH.'assets/snippets/evoUtils/snippet.evoUtils.php';
