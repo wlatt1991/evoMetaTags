@@ -12,7 +12,7 @@
  */
 
 <base href="[(site_url)]" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=[(modx_charset)]" /> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
 <link href="[(site_url)][[if? &is=[*id*]:!=:1 &then=[~[*id*]~]]]" rel="canonical">
 <link rel="shortcut icon" href="[(site_url)]favicon.ico" />
