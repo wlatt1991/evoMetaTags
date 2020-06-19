@@ -13,6 +13,8 @@
 
 $widget = isset($widget) ? (string)$widget : '';
 
+$output = '';
+
 switch ($widget) {
     case 'vk_comments':
         $output = '<div id="vk_comments"></div>';
@@ -28,10 +30,6 @@ switch ($widget) {
 
     case 'vk_save':
         $output = '<div id="vk_save"></div>';
-        break;
-    
-    default:
-        # code...
         break;
 }
 
@@ -87,4 +85,4 @@ if (!function_exists('addVkScripts')) {
     addVkScripts();
 }
 
-return;
+return $output;
