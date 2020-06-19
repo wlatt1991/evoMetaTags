@@ -18,7 +18,5 @@
 <link rel="shortcut icon" href="[(site_url)]favicon.ico" />
 <!--[if lt IE 9]><script src="[(site_url)]assets/templates/utils/html5shiv.min.js"></script><![endif]-->
 [[evoMetaTags]]
-[[evoUtils?
-    &noCopy=`1`
-    $addLI=`1`
-]]
+[[evoNoCopy]]
+[[evoLI]]
