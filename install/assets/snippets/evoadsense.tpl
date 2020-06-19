@@ -16,9 +16,12 @@ $modx->regClientHTMLBlock('
 <script>
     $(document).ready(function() {
         setTimeout(function() {
-            if($(".adsbygoogle").length) {
+            var count = $(".adsbygoogle").length;
+            if(count) {
                 $.getScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", function(){
-                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    for (var i = 0; i < count; i++) {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    }
                 });
             }
         }, 1500);
