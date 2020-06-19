@@ -17,31 +17,31 @@ $apiId = isset($apiId) ? (int)$apiId : 0;
 $shareProps = isset($shareProps) ? (string)$shareProps : '{type: "round", text: "Сохранить"}';
 $likeProps = isset($likeProps) ? (string)$likeProps : '{type: "button"}';
 $commentsProps = isset($commentsProps) ? (string)$commentsProps : '{limit: 20, attach: "*", autoPublish: 1}';
-$groupsProps = isset($groupsProps) ? (string)$groupsProps : '{mode: 1, no_cover: 1}';
-$groupsId = isset($groupsId) ? (int)$groupsId : 0;
+$groupProps = isset($groupProps) ? (string)$groupProps : '{mode: 1, no_cover: 1}';
+$groupId = isset($groupId) ? (int)$groupId : 0;
 $bookmarksProps = isset($bookmarksProps) ? (string)$bookmarksProps : '{"height":20}';
 
 $output = '';
 
 switch ($widget) {
-    case 'vk_comments':
-        $output = '<div id="vk_comments"></div>';
+    case 'comments':
+        $output = '<div id="evo_vk_comments"></div>';
         break;
 
-    case 'vk_groups':
-        $output = '<div id="vk_groups"></div>';
+    case 'group':
+        $output = '<div id="evo_vk_group"></div>';
         break;
 
-    case 'vk_like':
-        $output = '<div id="vk_like"></div>';
+    case 'like':
+        $output = '<div id="evo_vk_like"></div>';
         break;
 
-    case 'vk_save':
-        $output = '<div id="vk_save"></div>';
+    case 'save':
+        $output = '<div id="evo_vk_save"></div>';
         break;
 
-    case 'vk_bookmarks':
-        $output = '<div id="vk_bookmarks"></div>';
+    case 'bookmarks':
+        $output = '<div id="evo_vk_bookmarks"></div>';
         break;
 }
 
@@ -50,33 +50,33 @@ if (!function_exists('addVkScripts') && !empty($output)) {
         <script>
             $(document).ready(function() {
                 setTimeout(function() {
-                    var is_vk_comments = !!$("#vk_comments").length;
-                    var is_vk_groups = !!$("#vk_groups").length;
-                    var is_vk_like = !!$("#vk_like").length;
-                    var is_vk_bookmarks = !!$("#vk_bookmarks").length;
-                    var is_vk_save = !!$("#vk_save").length;
+                    var is_comments = !!$("#evo_vk_comments").length;
+                    var is_group = !!$("#evo_vk_group").length;
+                    var is_like = !!$("#evo_vk_like").length;
+                    var is_bookmarks = !!$("#evo_vk_bookmarks").length;
+                    var is_save = !!$("#evo_vk_save").length;
 
-                    if(is_vk_save) {
+                    if(is_save) {
                         $.getScript("//vk.com/js/api/share.js?95", function(){
                             $("#vk_save").html(VK.Share.button(false, '.$shareProps.'));
                         });
                     }
-                    if(is_vk_comments || is_vk_groups || is_vk_like || is_vk_bookmarks) {
+                    if(is_comments || is_group || is_like || is_bookmarks) {
                         $.getScript("//vk.com/js/api/openapi.js?168", function(){
-                            if(is_vk_comments || is_vk_groups || is_vk_like) {
+                            if(is_comments || is_group || is_like) {
                                 VK.init({apiId: '.$apiId.', onlyWidgets: true});
-                                if (is_vk_like) {
-                                    VK.Widgets.Like("vk_like", '.$likeProps.');
+                                if (is_like) {
+                                    VK.Widgets.Like("evo_vk_like", '.$likeProps.');
                                 }
-                                if (is_vk_comments) {
-                                    VK.Widgets.Comments("vk_comments", '.$commentsProps.');
+                                if (is_comments) {
+                                    VK.Widgets.Comments("evo_vk_comments", '.$commentsProps.');
                                 }
-                                if (is_vk_groups) {
-                                    VK.Widgets.Group("vk_groups", '.$groupsProps.', '.$groupsId.');
+                                if (is_group) {
+                                    VK.Widgets.Group("evo_vk_group", '.$groupProps.', '.$groupId.');
                                 }
                             }
-                            if (is_vk_bookmarks) {
-                                VK.Widgets.Bookmarks("vk_bookmarks", '.$bookmarksProps.');
+                            if (is_bookmarks) {
+                                VK.Widgets.Bookmarks("evo_vk_bookmarks", '.$bookmarksProps.');
                             }
                         });
                     }
