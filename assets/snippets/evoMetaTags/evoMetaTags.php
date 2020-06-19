@@ -11,8 +11,7 @@ class evoMetaTags
     private $pageTemplate = 0;
     public $permission = true;
     private $metaTags = [];
-
-
+    private $charset = 'UTF-8';
 
     private $metaFields = [];
 
@@ -26,6 +25,7 @@ class evoMetaTags
         $this->modx = $modx;
         $this->params = $params;
         $this->pageTemplate = $modx->documentObject['template'];
+        $this->charset = $modx->getConfig('modx_charset');
         $this->metaTags = isset($params['metaTags'])?explode('',str_replace(" ", "", $this->params['metaTags'])):['site_name', 'locale', 'type', 'title', 'description', 'image', 'url'];
 
         $this->setFields();
@@ -299,7 +299,7 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT) . "</title>\t\n" . $output;
+                $output = "\t\n<title>" . $this->charset . html_entity_decode($value, ENT_COMPAT) . "</title>\t\n" . $output;
             }
 
             $render = DLTemplate::getInstance($this->modx);
