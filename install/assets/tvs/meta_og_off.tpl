@@ -5,7 +5,7 @@
  *
  * @category	tv
  * @name	meta_og_off
- * @internal	@caption Не выводить og теги на текущей странице
+ * @internal	@caption Не выводить OG теги на текущей странице
  * @internal	@input_type checkbox
  * @internal	@modx_category Content
  * @internal	@input_default 

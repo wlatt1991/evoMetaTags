@@ -19,6 +19,6 @@ $versions = [
     '2' => '2.2.4',
 ];
 
-$modx->regClientScript($modx->getConfig('site_url').'assets/templates/jquery/jquery-'.$versions[$version].'.min.js');
+$modx->regClientScript($modx->getConfig('site_url').'assets/templates/utils/jquery/jquery-'.$versions[$version].'.min.js');
 
 return;

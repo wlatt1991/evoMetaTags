@@ -5,7 +5,7 @@
  * Счетчик LI для Evo
  *
  * @category	snippet
- * @internal	@modx_category Content
+ * @internal	@modx_category Utils
  * @internal	@installset base
  * @internal	@overwrite true
  * @internal	@properties {}
