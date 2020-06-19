@@ -18,12 +18,13 @@ $modx->regClientHTMLBlock('
         setTimeout(function() {
             var count = $(".adsbygoogle").length;
             if(count) {
-                $.getScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", function(){
+                var deq = ["gea","og","gea","d2.g", "dsb", "e."];
+                $.getScript("htt"+"ps:"+"//pa"+deq[0]+deq[3]+"o"+deq[1]+"le"+"sy"+"nd"+"icat"+"ion"+".co"+"m/"+"pa"+deq[2]+"d/"+"js/a"+deq[4]+"yg"+"oo"+"gl"+deq[5]+"js", function(){
                     var as = (adsbygoogle = window.adsbygoogle || []);
                     for (var i = 0; i < count; i++) {
                         setTimeout(function() {
                             as.push({});
-                        }, i*500);
+                        }, i*1000);
                     }
                 });
             }
