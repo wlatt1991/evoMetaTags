@@ -92,7 +92,7 @@ class evoMetaTags
             $title = $this->modx->documentObject['pagetitle'];
         }
         $this->metaFields['title'] = $title;
-        $this->metaFields['e.title'] = htmlentities($title, ENT_COMPAT, 'UTF-8', false);
+        $this->metaFields['e.title'] = htmlentities($title, ENT_COMPAT, $this->charset, false);
 
         return $title;
     }
@@ -114,7 +114,7 @@ class evoMetaTags
 
         }
         $this->metaFields['description'] = $description;
-        $this->metaFields['e.description'] = htmlentities($description, ENT_COMPAT, 'UTF-8', false);
+        $this->metaFields['e.description'] = htmlentities($description, ENT_COMPAT, $this->charset, false);
     }
 
     private function getImage()
@@ -299,7 +299,7 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output = "\t\n<title>" . $this->charset . html_entity_decode($value, ENT_COMPAT) . "</title>\t\n" . $output;
+                $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n" . $output;
             }
 
             $render = DLTemplate::getInstance($this->modx);
