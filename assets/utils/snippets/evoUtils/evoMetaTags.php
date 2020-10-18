@@ -46,6 +46,9 @@ class evoMetaTags
     private function getSiteName()
     {
         $name = $this->modx->getConfig('site_name');
+        if (isset($this->modx->getConfig('cfg_site_name')) && !empty($this->modx->getConfig('cfg_site_name'))) {
+            $name = $this->modx->getConfig('cfg_site_name');
+        }
         if (!empty($this->params['siteName'])) {
             $name = $this->params['siteName'];
         }
@@ -83,10 +86,10 @@ class evoMetaTags
     private function getTitle()
     {
 
-        if (!empty($this->params['title'])) {
-            $title = $this->params['title'];
-        } else if (!empty($this->modx->documentObject['meta_title'][1])) {
+        if (!empty($this->modx->documentObject['meta_title'][1])) {
             $title = $this->modx->documentObject['meta_title'][1];
+        } else if (!empty($this->params['title'])) {
+            $title = $this->params['title'];
         } else {
             $title = $this->modx->documentObject['pagetitle'];
         }
@@ -99,10 +102,10 @@ class evoMetaTags
     private function getDescription()
     {
         $summaryContent = isset($this->params['summaryContent']) ? $this->params['summaryContent'] : '1';
-        if (!empty($this->params['description'])) {
-            $description = $this->params['description'];
-        } else if (!empty($this->modx->documentObject['meta_description'][1])) {
+        if (!empty($this->modx->documentObject['meta_description'][1])) {
             $description = $this->modx->documentObject['meta_description'][1];
+        } else if (!empty($this->params['description'])) {
+            $description = $this->params['description'];
         } else if (!empty($this->modx->documentObject['introtext'])) {
             $description = $this->modx->documentObject['introtext'];
         } else {
@@ -300,6 +303,10 @@ class evoMetaTags
 
             if ($tagName === 'title') {
                 $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n" . $output;
+            }
+
+            if ($tagName === 'description') {
+                $output = "\t\n<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n" . $output;
             }
 
             if ($this->permission) {
