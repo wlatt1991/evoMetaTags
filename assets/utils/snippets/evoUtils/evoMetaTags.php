@@ -293,7 +293,7 @@ class evoMetaTags
     {
         $tpl = isset($this->params['tpl'])?$this->params['tpl']: '@CODE:'."\t\n".'<meta property="og:[+type+]" content="[+value+]">';
 
-        $output = '\t\n<!-- Metatags -->\t\n';
+        $output = "\t\n<!-- Metatags -->\t\n";
 
         foreach ($this->metaTags as $tagName) {
             $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
