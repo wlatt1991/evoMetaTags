@@ -1,5 +1,5 @@
 <?php
-require_once MODX_BASE_PATH.'assets/snippets/evoUtils/evoUtils.php';
+require_once MODX_BASE_PATH.'assets/utils/snippets/evoUtils/evoUtils.php';
 require_once MODX_BASE_PATH.'assets/snippets/DocLister/lib/DLTemplate.class.php';
 
 $share = new evoMetaTags($modx,$params);

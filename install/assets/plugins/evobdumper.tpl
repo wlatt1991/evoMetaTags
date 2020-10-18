@@ -14,4 +14,4 @@
  * @internal    @installset base
  */
 
-require MODX_BASE_PATH . 'assets/plugins/evoBDumper/evoBDumper.php';
+require MODX_BASE_PATH . 'assets/utils/plugins/evoBDumper/evoBDumper.php';
