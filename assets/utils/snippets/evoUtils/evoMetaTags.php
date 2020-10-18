@@ -46,7 +46,7 @@ class evoMetaTags
     private function getSiteName()
     {
         $name = $this->modx->getConfig('site_name');
-        if (isset($this->modx->getConfig('cfg_site_name')) && !empty($this->modx->getConfig('cfg_site_name'))) {
+        if (!empty($this->modx->getConfig('cfg_site_name'))) {
             $name = $this->modx->getConfig('cfg_site_name');
         }
         if (!empty($this->params['siteName'])) {
@@ -302,14 +302,21 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output = "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n" . $output;
+                $output .= "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n";
             }
 
             if ($tagName === 'description') {
-                $output = "\t\n<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n" . $output;
+                $output .= "\t\n<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n";
             }
+        }
 
-            if ($this->permission) {
+        if ($this->permission) {
+            foreach ($this->metaTags as $tagName) {
+                $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
+                if(empty($value)){
+                    continue;
+                }
+
                 $render = DLTemplate::getInstance($this->modx);
 
                 $output .= $render->parseChunk($tpl, [
