@@ -293,7 +293,7 @@ class evoMetaTags
     {
         $tpl = isset($this->params['tpl'])?$this->params['tpl']: '@CODE:'."\t\n".'<meta property="og:[+type+]" content="[+value+]">';
 
-        $output = "\t\n<!-- Metatags -->\t\n";
+        $output = "<!-- Metatags -->\t\n";
 
         foreach ($this->metaTags as $tagName) {
             $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
@@ -302,15 +302,16 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output .= "\t\n<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n";
+                $output .= "<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n";
             }
 
             if ($tagName === 'description') {
-                $output .= "\t\n<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n";
+                $output .= "<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n";
             }
         }
 
         if ($this->permission) {
+            $output .= "\t\n<!-- OG tags -->";
             foreach ($this->metaTags as $tagName) {
                 $value = $this->metaFields['e.'.$tagName] ? $this->metaFields['e.'.$tagName] : $this->metaFields[$tagName];
                 if(empty($value)){
