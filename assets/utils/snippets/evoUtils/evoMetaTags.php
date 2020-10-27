@@ -308,7 +308,9 @@ class evoMetaTags
             }
 
             if ($tagName === 'description') {
-                $output .= "<meta name=\"description\" content=\"" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "\">\t\n";
+                $description = html_entity_decode($value, ENT_COMPAT, $this->charset);
+                $output .= "<meta name=\"description\" content=\"" . $description . "\">\t\n";
+                $this->modx->setPlaceholder('em.description', $description);
             }
         }
 
@@ -326,6 +328,8 @@ class evoMetaTags
                     'type' => $tagName,
                     'value' => $value,
                 ]);
+
+                $this->modx->setPlaceholder('em.og_' . $tagName, $value);
             }
         }
 
