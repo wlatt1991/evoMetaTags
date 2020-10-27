@@ -302,7 +302,9 @@ class evoMetaTags
             }
 
             if ($tagName === 'title') {
-                $output .= "<title>" . html_entity_decode($value, ENT_COMPAT, $this->charset) . "</title>\t\n";
+                $title = html_entity_decode($value, ENT_COMPAT, $this->charset);
+                $output .= "<title>" . $title . "</title>\t\n";
+                $this->modx->setPlaceholder('em.title', $title);
             }
 
             if ($tagName === 'description') {
